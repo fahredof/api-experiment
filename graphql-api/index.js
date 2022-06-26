@@ -10,11 +10,10 @@ app.use(cors())
 const root = {
     getStaff: async () => {
         const staff = await db.query('SELECT * FROM staff')
-        console.log(staff)
         return staff.rows
     },
     getOneStaff: async ({ id }) => {
-        const staff = await db.query('SELECT * FROM staff WHERE staff_id = $1', [id])
+        const staff = await db.query(`SELECT * FROM staff WHERE staff_id=${id}`)
         return staff.rows
     },
 }
